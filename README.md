@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 # gdb-plugin-relative-installer
-=======
-# THIS REPO IS INSPIRED BY 
-# https://github.com/apogiatzis/gdb-peda-pwndbg-gef
-# AND THIS REPO IS FOR RELATIVE PATH INSTALLATION
+
+THIS REPO IS INSPIRED BY 
+https://github.com/apogiatzis/gdb-peda-pwndbg-gef
+AND THIS REPO IS FOR RELATIVE PATH INSTALLATION
 
 ---
 # Pwndbg + GEF + Peda - One for all, and all for one
@@ -37,4 +37,3 @@ cd ~/gdb-peda-pwndbg-gef
 ```
 ./update.sh
 ```
->>>>>>> 32b0f9a (make new repo)
