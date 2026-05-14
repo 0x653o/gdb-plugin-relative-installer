@@ -7,8 +7,29 @@ plugin_path="$installer_path/gdb-plugin"
 echo "[+] Target plugin directory: $plugin_path"
 mkdir -p "$plugin_path"
 
-# 종속성 라이브러리 설치 (PEDA 에러 방지용)
-sudo apt update && sudo apt install -y python3-six python3-setuptools
+# 종속성 라이브러리 및 시스템 도구 설치 함수
+install_dependencies() {
+    echo "[+] Detecting package manager and installing dependencies..."
+    
+    if command -v apt >/dev/null; then
+        sudo apt update && sudo apt install -y python3 python3-pip git gdb
+    elif command -v dnf >/dev/null; then
+        sudo dnf install -y python3 python3-pip git gdb
+    elif command -v pacman >/dev/null; then
+        sudo pacman -Sy --noconfirm python python-pip git gdb
+    elif command -v brew >/dev/null; then
+        brew install python git gdb
+    else
+        echo "[!] No supported package manager found. Please ensure python3, pip, git, and gdb are installed."
+    fi
+
+    # Python 패키지 설치 (PEDA 등 플러그인 에러 방지용)
+    echo "[+] Installing Python packages via pip..."
+    python3 -m pip install --upgrade pip
+    python3 -m pip install six setuptools
+}
+
+install_dependencies
 
 # 플러그인 설치 함수 (기존 폴더 삭제 로직 포함)
 install_plugin() {
