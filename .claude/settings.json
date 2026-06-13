@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "ROOT=\"$(git rev-parse --show-toplevel 2>/dev/null || pwd)\"; [ -f \"$ROOT/.claude/hooks/protect-root.py\" ] && python \"$ROOT/.claude/hooks/protect-root.py\" \"$ROOT\" || true",
+            "statusMessage": "Checking root-file protection..."
+          }
+        ]
+      }
+    ]
+  }
+}
