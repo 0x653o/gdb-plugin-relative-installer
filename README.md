@@ -13,7 +13,7 @@ This is a script which installs Pwndbg, GEF, and Peda GDB plugins in a single co
 Run `install.sh` and then use one of the commands below to launch the corresponding GDB environment:
 
 ```
-gdb-peda - not work well(when bug is fixed, then do update.sh)
+gdb-peda
 gdb-peda-intel
 gdb-peda-arm
 gdb-pwndbg
@@ -32,11 +32,15 @@ https://medium.com/bugbountywriteup/pwndbg-gef-peda-one-for-all-and-all-for-one-
 - **Package Manager**: apt, dnf, pacman, or Homebrew
 - **Git**
 
+# Test Enviroment
+
+- **OS**: Ubuntu 22.04 or higher
+
 > **Older GDB / Python (e.g. Ubuntu 18.04)?** If your GDB is below 9.1, `install.sh` may fail to load the latest GEF/Pwndbg. Use the legacy installer in [`legacy/`](legacy/README.md) instead.
 
 # Installation
 
-The installer automatically detects your package manager and installs necessary dependencies (`gdb`, `python3`, `pip`, `git`) and Python libraries (`six`, `setuptools`).
+The installer automatically detects your package manager and installs necessary dependencies (`gdb`, `python3`, `pip`, `git`) and Python libraries (`six`, `setuptools`. `uv`).
 
 ```
 git clone https://github.com/yourusername/gdb-plugin-relative-installer.git
